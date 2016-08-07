@@ -18,7 +18,7 @@ namespace MessageBoard.Controllers
             _repo = repo;
         }
 
-        //api/v1/topics/?includeReplies=true
+        //localhost:1540/api/v1/topics/?includeReplies=true
         public IEnumerable<Topic> Get(bool includeReplies = false)
         {
             IQueryable<Topic> results;

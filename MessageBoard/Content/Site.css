@@ -10,7 +10,6 @@
 .message .title {
   font-size: 20px;
   font-weight: bold;
-  -webkit-text-shadow: 2px 2px 4px #aaaaaa;
   text-shadow: 2px 2px 4px #aaaaaa;
 }
 .message .reply {
@@ -21,6 +20,6 @@
 .message .reply .created {
   font-size: 9px;
   margin-left: 10px;
-  -webkit-text-shadow: 2px 2px 3px #aaaaaa;
   text-shadow: 2px 2px 3px #aaaaaa;
 }
+/*# sourceMappingURL=Site.css.map */
