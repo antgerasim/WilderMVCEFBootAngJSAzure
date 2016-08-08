@@ -1,52 +1,17 @@
 ﻿@model IEnumerable<Persistance.Data.Topic>
 @{
     ViewBag.Title = "Home Page";
+    ViewBag.InitModule = "donHomeIndex";//AngJs controller here adds structure to the project
 }
 
 @section Scripts {
 <script src="~/Js/app.js"></script>
 }
 
-<div ng-controller="homeIndexCtrl as homeIndex">
-    <div class="message-header">
-        <h1>Message Board</h1>
-        <p class="lead">Latest Messages...</p>
-        <div>This is for {{homeIndex.name}}, he is awesome</div>
-        <div>Message Count: {{homeIndex.data.length}}</div>
-    </div>
-
-    <div class="progress progress-striped active" ng-show="homeIndex.isBusy">
-        <div class="bar" style="width: 100%"></div>
-    </div>
-
-    <div class="messages" >
-        <div class="message row" ng-repeat="topic in homeIndex.data">
-            <div class="title span10">
-                {{topic.title}}
-            </div>
-            <div class="date span2">
-                {{topic.createdAt | date:"medium"}}
-            </div>
-            <div class="contents span12">
-                {{topic.body}}
-            </div>
-            <div class="toolbar span12">
-                <button class="btn btn-primary reply-button">Reply</button>
-            </div>
-            <div class="replies span12">
-                <div class="reply" ng-repeat="reply in topic.replies">
-                    <div class="created pull-right">
-                        {{reply.createdAt | date:"medium"}}
-                    </div>
-                    <div class="content">
-                        {{reply.body}}
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
+<!--finds the place on the page, where each of these individual routed views are going to be injected.
+   Very similar to the serverside-idea of the _Layout page -->
+<div ng-view=""></div> <!--Inject view templates here-->
 
 
-</div>
+<!--The #(pound) declaration is used for interpage routing. Everything after 
+    that pound directive is what the routing  engine is going to look for*-->

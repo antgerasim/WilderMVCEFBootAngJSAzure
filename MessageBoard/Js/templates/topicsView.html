@@ -1,0 +1,44 @@
+﻿<div> <!--no longer controller directive needed here. Supplying Controller from routing! -->
+    <div class="message-header">
+        <h1>Message Board</h1>
+        <p class="lead">Latest Messages...</p>
+        <div>This is for {{topicsCtrl.name}}, he is awesome</div>
+        <div>Message Count: {{topicsCtrl.data.length}}</div>
+    </div>
+
+    <div>
+        <a href="#/newmessage">Add New Message</a>
+    </div>
+
+    <div class="progress progress-striped active" ng-show="topicsCtrl.isBusy">
+        <div class="bar" style="width: 100%"></div>
+    </div>
+
+    <div class="messages">
+        <div class="message row" ng-repeat="topic in topicsCtrl.data">
+            <div class="title span10">
+                {{topic.title}}
+            </div>
+            <div class="date span2">
+                {{topic.createdAt | date:"medium"}}
+            </div>
+            <div class="contents span12">
+                {{topic.body}}
+            </div>
+            <div class="toolbar span12">
+                <button class="btn btn-primary reply-button">Reply</button>
+            </div>
+            <div class="replies span12">
+                <div class="reply" ng-repeat="reply in topic.replies">
+                    <div class="created pull-right">
+                        {{reply.createdAt | date:"medium"}}
+                    </div>
+                    <div class="content">
+                        {{reply.body}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

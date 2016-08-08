@@ -1,10 +1,23 @@
-﻿//home-index.js
+﻿//app.js
 
-var donApp = angular.module("donApp", []);
+var donApp = angular.module("donHomeIndex", ["ngRoute"]); //for ng-app
 
-donApp.controller("homeIndexCtrl", homeIndexController);
+donApp.config(function($routeProvider) {
 
-function homeIndexController($http) {
+    $routeProvider
+        .when("/", {
+            controller: "topicsController",
+            controllerAs: "topicsCtrl",
+            templateUrl: "/Js/templates/topicsView.html"
+        })
+        .otherwise({
+            redirectTo: "/"
+        });
+});
+
+donApp.controller("topicsController", topicsController); //for ng-controller
+
+function topicsController($http) {
     var vm = this;
     vm.name = "Anton";
     vm.dataCount = 0;
@@ -18,7 +31,7 @@ function homeIndexController($http) {
                 //reason = when data is copied into a scope var like this
                 //angular will update the scope automatically, re-executing 
                 //the repeat directives 
-            angular.copy(result.data, vm.data);
+                angular.copy(result.data, vm.data);
                 vm.dataCount = result.data.length;
 
             },
