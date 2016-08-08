@@ -10,12 +10,17 @@ donApp.config(function($routeProvider) {
             controllerAs: "topicsCtrl",
             templateUrl: "/Js/templates/topicsView.html"
         })
+        .when("/newmessage", {
+            controller: "newTopicController",
+            controllerAs: "newTopicCtrl",
+            templateUrl: "/Js/templates/newTopicView.html"
+        })
         .otherwise({
             redirectTo: "/"
         });
 });
 
-donApp.controller("topicsController", topicsController); //for ng-controller
+donApp.controller("topicsController", topicsController); //for topicsView.html
 
 function topicsController($http) {
     var vm = this;
@@ -44,3 +49,17 @@ function topicsController($http) {
             vm.isBusy = false;
         });
 };
+
+/*Window will be useful for us when we want to be able to programmatically 
+ *  change the window location back to the home-view if nessacary */
+donApp.controller("newTopicController", newTopicController); //for newTopicView.html
+
+function newTopicController($http, $window) {
+    var vm = this;
+    vm.newTopic = {};
+
+    vm.save = function() {
+        alert(vm.newTopic.Title);
+    }
+}
+
